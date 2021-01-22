@@ -345,6 +345,12 @@ module Searchkick
         }
       end
 
+      Array(options[:conversions_v2]).each do |conversions_field|
+        mapping[conversions_field] = {
+          type: "rank_features"
+        }
+      end
+
       mapping_options = Hash[
         [:suggest, :word, :text_start, :text_middle, :text_end, :word_start, :word_middle, :word_end, :highlight, :searchable, :filterable]
           .map { |type| [type, (options[type] || []).map(&:to_s)] }

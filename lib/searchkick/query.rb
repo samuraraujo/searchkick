@@ -423,6 +423,7 @@ module Searchkick
             }
 
             should.concat(set_conversions)
+            should.concat(set_conversions_v2)
           end
 
           query = payload
@@ -626,6 +627,21 @@ module Searchkick
                   }
                 }
               }
+            }
+          }
+        end
+      else
+        []
+      end
+    end
+
+    def set_conversions_v2
+      conversions_fields = Array(options[:conversions_v2] || searchkick_options[:conversions_v2]).map(&:to_s)
+      if conversions_fields.present? && options[:conversions_v2] != false
+        conversions_fields.map do |conversions_field|
+          {
+            rank_feature: {
+              field: "#{conversions_field}.#{options[:conversions_term] || term}"
             }
           }
         end
