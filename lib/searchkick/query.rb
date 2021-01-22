@@ -641,7 +641,10 @@ module Searchkick
         conversions_fields.map do |conversions_field|
           {
             rank_feature: {
-              field: "#{conversions_field}.#{options[:conversions_term] || term}"
+              field: "#{conversions_field}.#{options[:conversions_term] || term}",
+              log: {
+                scaling_factor: 1,
+              }
             }
           }
         end

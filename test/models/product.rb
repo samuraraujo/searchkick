@@ -28,7 +28,7 @@ class Product
   def search_data
     serializable_hash.except("id", "_id").merge(
       conversions: conversions,
-      conversions_v2: conversions_v2 || {},
+      conversions_v2: conversions_v2,
       user_ids: user_ids,
       location: {lat: latitude, lon: longitude},
       multiple_locations: [{lat: latitude, lon: longitude}, {lat: 0, lon: 0}],
