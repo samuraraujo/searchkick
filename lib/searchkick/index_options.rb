@@ -147,7 +147,7 @@ module Searchkick
               # &_to_and
               ampersand: {
                 type: "mapping",
-                mappings: ["&=> and "]
+                mappings: ["&=> e "]
               }
             },
             tokenizer: {
